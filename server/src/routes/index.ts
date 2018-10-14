@@ -1,9 +1,9 @@
-import { Router, Request, Response } from 'express';
-import _ from 'lodash';
-import { Types } from "mongoose";
-
-import url from '../models/url';
+import { Router } from 'express';
+import { getUrl, saveUrl } from './../controllers';
 
 const router: Router = Router();
+
+router.get('/:shortUrl', getUrl);
+router.post('/', saveUrl);
 
 export default router;
