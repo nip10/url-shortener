@@ -17,7 +17,7 @@ const getUrl = async (req: Request, res: Response) => {
     logger.info(`Requested shortUrl ${shortUrl} for ${url}`);
     return res.json({ url });
   } catch (e) {
-    logger.error(`Url ${shortUrl} not found.`);
+    logger.error(`Url "${shortUrl}" (decoded id: ${id}) not found.`);
     return res.sendStatus(404);
   }
 }
@@ -31,10 +31,10 @@ const saveUrl = async (req: Request, res: Response) => {
   try {
     const { _id } = await url.save();
     const shortUrl = encode(_id);
-    logger.info(`Created new shortUrl ${shortUrl} for ${longUrl}`);
+    logger.info(`Created new shortUrl "${shortUrl}" for "${longUrl}"`);
     return res.status(201).json({ shortUrl });
   } catch (e) {
-    logger.error(`Error creating shortUrl for ${longUrl}`);
+    logger.error(`Error creating shortUrl for "${longUrl}"`);
     return res.sendStatus(500).json({ error: 'Error creating the short url.' });
   }
 }

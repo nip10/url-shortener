@@ -12,13 +12,13 @@ const { NODE_ENV, MONGODB_URI, MONGODB_URI_TEST } = process.env;
 const isTest = NODE_ENV === 'test';
 
 if (!isTest && _.isNil(MONGODB_URI)) {
-  logger.log('error', 'You need to set a MONGODB_URI in the .env file');
-  process.exit(1);
+  logger.error('You need to set a MONGODB_URI in the .env file');
+  process.exit(-1);
 }
 
 if (isTest && _.isNil(MONGODB_URI_TEST)) {
-  logger.log('error', 'You need to set a MONGODB_URI_TEST in the .env file');
-  process.exit(1);
+  logger.error('You need to set a MONGODB_URI_TEST in the .env file');
+  process.exit(-1);
 }
 
 const dburl = isTest ? MONGODB_URI_TEST : MONGODB_URI;
@@ -34,9 +34,9 @@ mongoose.set('useFindAndModify', false);
 
 mongoose.connect(dburl, mongooseOptions)
   .then(() => {
-    logger.log('info', 'Connected to database.');
+    logger.info('Connected to database.');
   }, (err: any) => {
-    logger.log('error', 'Connection to the database failed. %s', err);
+    logger.error(`Connection to the database failed. Details: ${err}`);
     process.exit(1);
   });
 
