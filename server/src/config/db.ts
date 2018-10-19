@@ -30,6 +30,8 @@ const mongooseOptions = {
   useNewUrlParser: true,
 };
 
+mongoose.set('useFindAndModify', false);
+
 mongoose.connect(dburl, mongooseOptions)
   .then(() => {
     logger.log('info', 'Connected to database.');
