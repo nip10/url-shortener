@@ -8,7 +8,7 @@
     "watch": "cross-env NODE_ENV=development nodemon",
     "debug": "cross-env NODE_ENV=development nodemon --config nodemon-debug.json",
     "lint": "tslint -p tsconfig.json -c tslint.json",
-    "start": "cross-env NODE_ENV=production node dist/server.js"
+    "start": "cross-env NODE_ENV=production node dist/app.js"
   },
   "dependencies": {
     "bluebird": "^3.5.2",
@@ -43,6 +43,7 @@
     "cross-env": "^5.2.0",
     "nodemon": "^1.18.4",
     "prettier": "^1.14.3",
+    "ts-node": "^7.0.1",
     "tsconfig-paths": "^3.6.0",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",

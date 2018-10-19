@@ -14,13 +14,13 @@ const { PORT, NODE_ENV } = process.env;
 const PORT_N = Number.parseInt(PORT, 10);
 
 if (!_.isFinite(PORT_N)) {
-  logger.log('error', 'You need to set a PORT in the .env file');
-  process.exit(1);
+  logger.error('You need to set a PORT in the .env file');
+  process.exit(-1);
 }
 
 if (_.isNil(NODE_ENV)) {
-  logger.log('error', 'You need to set a NODE_ENV in the .env file');
-  process.exit(1);
+  logger.error('You need to set a NODE_ENV in the .env file');
+  process.exit(-1);
 }
 
 const isProd = NODE_ENV === 'production';
