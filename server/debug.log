@@ -1,0 +1,35 @@
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"name":"MongoNetworkError","errorLabels":["TransientTransactionError"],"level":"error","message":"Connection to the database failed. %s"}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Error creating shortUrl for http://www.google.pt","level":"error"}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Error creating shortUrl for http://www.google.pt","level":"error"}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Error creating shortUrl for http://www.google.pt","level":"error"}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Error creating shortUrl for http://www.google.pt","level":"error"}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Error creating shortUrl for http://www.google.pt","level":"error"}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Error creating shortUrl for http://www.google.pt: MongooseError: document must have an _id before saving","level":"error"}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Error creating shortUrl for http://www.google.pt","level":"error"}
+{"message":"Error creating shortUrl for http://www.google.pt","level":"error"}

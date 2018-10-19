@@ -14,16 +14,17 @@ const UrlSchema = new mongoose.Schema({
     required: true,
   },
 }, {
-  timestamps: true,
-});
+    timestamps: true,
+  });
 
 UrlSchema.pre('save', next => {
+  const foo = this;
   CounterSchema.findByIdAndUpdate('linkEntryCount', { $inc: { count: 1 } }, { new: true, upsert: true },
     (err, counter) => {
       if (err) { return next(err); }
-      this._id = counter.count;
+      foo._id = counter.count;
       next();
-  });
+    });
 });
 
 export default mongoose.model<IUrlDocument>('Url', UrlSchema);

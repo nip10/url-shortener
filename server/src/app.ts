@@ -52,4 +52,19 @@ app.listen(PORT_N, () => {
   logger.info(`Started on port ${PORT_N} in ${NODE_ENV} mode`);
 });
 
+// NOTE: event name is camelCase as per node convention
+process.on("unhandledRejection", (reason, promise) => {
+  console.log('unhandledRejection');
+  console.log('reason: ', JSON.stringify(reason, null, 2));
+  console.log('promise: ', JSON.stringify(promise, null, 2));
+  // See Promise.onPossiblyUnhandledRejection for parameter documentation
+});
+
+// NOTE: event name is camelCase as per node convention
+process.on("rejectionHandled", (promise) => {
+  console.log('rejectionHandled');
+  console.log('promise: ', JSON.stringify(promise, null, 2));
+  // See Promise.onUnhandledRejectionHandled for parameter documentation
+});
+
 export default app;
