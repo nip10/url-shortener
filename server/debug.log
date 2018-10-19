@@ -33,3 +33,87 @@
 {"level":"info","message":"Connected to database."}
 {"message":"Error creating shortUrl for http://www.google.pt","level":"error"}
 {"message":"Error creating shortUrl for http://www.google.pt","level":"error"}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Error creating shortUrl for http://www.google.pt","level":"error"}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Error creating shortUrl for http://www.google.pt","level":"error"}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Error creating shortUrl for http://www.google.pt","level":"error"}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Error creating shortUrl for http://www.google.pt","level":"error"}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Error creating shortUrl for http://www.google.pt","level":"error"}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Created new shortUrl 8 for http://www.google.pt","level":"info"}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Created new shortUrl 9 for http://www.google.pt","level":"info"}
+{"message":"Url 9 not found.","level":"error"}
+{"message":"Url 9 not found.","level":"error"}
+{"message":"Url 9 not found.","level":"error"}
+{"message":"Url favicon.ico not found.","level":"error"}
+{"message":"Url 9 not found.","level":"error"}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Created new shortUrl c for http://www.google.com","level":"info"}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Url c not found.","level":"error"}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Url \"c\" (decoded id: 9) not found.","level":"error"}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Created new shortUrl 3 for http://www.google.com","level":"info"}
+{"message":"Requested shortUrl 3 for http://www.google.com","level":"info"}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"level":"info","message":"Connected to database."}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"message":"Connected to database.","level":"info"}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"message":"Connected to database.","level":"info"}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"message":"Connected to database.","level":"info"}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"0":3005,"1":"development","level":"info","message":"Started on port %s in %s mode"}
+{"message":"Connected to database.","level":"info"}
+{"message":"Logging initialized at debug level","level":"debug"}
+{"message":"Started on port 3005 in development mode","level":"info"}
+{"message":"Connected to database.","level":"info"}
+{"message":"Created new shortUrl \"4\" for \"http://www.google.com\"","level":"info"}
