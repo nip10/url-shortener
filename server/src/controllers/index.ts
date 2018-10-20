@@ -6,10 +6,7 @@ import _ from 'lodash';
 import { isURL } from 'validator';
 
 const getUrl = async (req: Request, res: Response) => {
-  const shortUrl = _.get(req.params, 'shortUrl');
-  if (!shortUrl) {
-    return res.status(400).json({ error: 'ShortUrl is undefined.' });
-  }
+  const { shortUrl } = req.params;
   const id = decode(shortUrl);
   const update = { $inc: { hits: 1 } };
   try {
