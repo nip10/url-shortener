@@ -32,7 +32,7 @@ const saveUrl = async (req: Request, res: Response) => {
     return res.status(201).json({ shortUrl });
   } catch (e) {
     logger.error(`Error creating shortUrl for "${longUrl}"`);
-    return res.sendStatus(500).json({ error: 'Error creating the short url.' });
+    return res.status(500).json({ error: 'Error creating the short url.' });
   }
 }
 
