@@ -18,10 +18,10 @@ export default class Form extends React.Component<{}, IFormState> {
 
   private handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    alert('A name was submitted: ' + this.state.value);
+    console.log('A name was submitted: ' + this.state.value);
     const longUrl = this.state.value;
     try {
-      const res = await axios.post('localhost:3000/', { longUrl });
+      const res = await axios.post('/', { longUrl });
       console.log('Response:', res);
     } catch (error) {
       console.log('Error:', error);
@@ -30,10 +30,9 @@ export default class Form extends React.Component<{}, IFormState> {
 
   public render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="longurl"> Long URL: </label>
-        <input id="longurl" type="text" value={this.state.value} onChange={this.handleChange} />
-        <input type="submit" value="Submit" />
+      <form onSubmit={this.handleSubmit} className="flex-center flex-row">
+        <input className="form-input-url" type="text" value={this.state.value} onChange={this.handleChange} />
+        <input className="form-submit-url" type="submit" value="shorten url" placeholder="Your original URL here"/>
       </form>
     );
   }

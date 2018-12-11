@@ -1,0 +1,18 @@
+.form-input-url {
+  width: 50rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+}
+
+.form-submit-url {
+  margin-left: 1rem;
+  padding: 0 1rem;
+  height: 2rem;
+  background-color: white;
+  border: none;
+  color: #9b59b6;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+}

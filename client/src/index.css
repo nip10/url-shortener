@@ -2,5 +2,17 @@
 
 body {
   background-color: #9b59b6;
+  color: #fff;
   font-family: "Open Sans", sans-serif;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
 }

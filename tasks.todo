@@ -1,0 +1,8 @@
+Client:
+☐ Show shortened url
+☐ Remove border after clicking "Shorten url"
+☐ Add horizontal padding to the url input (text is glued to the left border)
+
+Server:
+☐ Fix this
+  {"message":"Url \"favicon.ico\" (decoded id: 1308184420381532400) not found.","level":"error"}
