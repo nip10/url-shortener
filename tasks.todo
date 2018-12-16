@@ -1,4 +1,11 @@
 Client:
+  ☐ Add router
+    ☐ Add 2 routes
+      ☐ /
+        - This is the homepage
+      ☐ /*
+        - This will make a request to the backend. If the shorturl exists, it'll redirect. If not, it'll show an
+        error or redirect to the homepage.
   ☐ Replace 'any' in axios response
   ☐ Add validation client-side
     The validation for the url input is already done server-side, but there's no
