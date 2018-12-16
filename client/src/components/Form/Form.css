@@ -1,8 +1,13 @@
+form {
+  text-align: center;
+}
+
 .form-input-url {
-  width: 50rem;
+  width: calc(100% - 10rem);
   height: 2rem;
   padding: 0;
   border: none;
+  text-indent: 1rem;
 }
 
 .form-submit-url {
@@ -15,4 +20,6 @@
   text-transform: uppercase;
   font-weight: bold;
   cursor: pointer;
+  width: 9rem;
+  outline: none;
 }

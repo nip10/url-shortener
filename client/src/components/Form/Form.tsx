@@ -3,25 +3,29 @@ import axios from 'axios';
 import './Form.css';
 
 interface IFormState {
-  value: string
+  url: string
 }
 
-export default class Form extends React.Component<{}, IFormState> {
-  constructor(props: {}) {
+interface IFormProps {
+  shortenUrlHandler: (url: string) => void,
+}
+
+export default class Form extends React.Component<IFormProps, IFormState> {
+  constructor(props: IFormProps) {
     super(props);
-    this.state = { value: '' };
+    this.state = { url: '' };
   }
 
   private handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ value: event.target.value });
+    this.setState({ url: event.target.value });
   }
 
   private handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log('A name was submitted: ' + this.state.value);
-    const longUrl = this.state.value;
+    const longUrl = this.state.url;
     try {
-      const res = await axios.post('/', { longUrl });
+      const res: any = await axios.post('/', { longUrl });
+      this.props.shortenUrlHandler(res.data.shortUrl);
       console.log('Response:', res);
     } catch (error) {
       console.log('Error:', error);
@@ -30,9 +34,9 @@ export default class Form extends React.Component<{}, IFormState> {
 
   public render() {
     return (
-      <form onSubmit={this.handleSubmit} className="flex-center flex-row">
-        <input className="form-input-url" type="text" value={this.state.value} onChange={this.handleChange} />
-        <input className="form-submit-url" type="submit" value="shorten url" placeholder="Your original URL here"/>
+      <form onSubmit={this.handleSubmit}>
+        <input className="form-input-url" type="text" value={this.state.url} onChange={this.handleChange} placeholder="Your original URL here"/>
+        <button className="form-submit-url" type="submit"> Shorten Url </button>
       </form>
     );
   }

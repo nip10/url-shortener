@@ -4,9 +4,11 @@ body {
   background-color: #9b59b6;
   color: #fff;
   font-family: "Open Sans", sans-serif;
+  max-width: 65%;
+  margin: 0 auto;
 }
 
-.flex-center {
+/* .flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,4 +17,4 @@ body {
 
 .flex-row {
   flex-direction: row;
-}
+} */
