@@ -11,19 +11,21 @@ interface IAppState {
 class App extends Component<{}, IAppState> {
   constructor(props: {}) {
     super(props);
-    this.state = { urls: []};
+    this.state = { urls: [] };
   }
+
   shortenUrl = (url: string) => {
-    // this.setState({ urls: [...this.state.urls, url] });
-    // TODO: Im only "saving" one url for now until I add the "History" feature
-    this.setState({ urls: [url] });
+    this.setState({ urls: [...this.state.urls, url] });
   }
+
   render() {
     return (
       <Fragment>
         <Title />
         <Form shortenUrlHandler={this.shortenUrl} />
-        {this.state.urls.map((url: string, i) => <Shortened key={i} url={url}/>)}
+        { this.state.urls.length > 0 &&
+          this.state.urls.map((url: string, i) => <Shortened key={i} elId={`url${i}`} url={url}/>)
+        }
         <GithubCorner href='https://github.com/nip10/url-shortener' />
       </Fragment>
     );

@@ -8,13 +8,14 @@ form {
   padding: 0;
   border: none;
   text-indent: 1rem;
+  background-color: #fdfdfd;
 }
 
 .form-submit-url {
   margin-left: 1rem;
   padding: 0 1rem;
   height: 2rem;
-  background-color: white;
+  background-color: #fdfdfd;
   border: none;
   color: #9b59b6;
   text-transform: uppercase;

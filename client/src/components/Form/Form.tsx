@@ -26,9 +26,9 @@ export default class Form extends React.Component<IFormProps, IFormState> {
     try {
       const res: any = await axios.post('/', { longUrl });
       this.props.shortenUrlHandler(res.data.shortUrl);
-      console.log('Response:', res);
     } catch (error) {
       console.log('Error:', error);
+      // TODO: Add error handling
     }
   }
 
