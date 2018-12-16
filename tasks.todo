@@ -1,7 +1,17 @@
 Client:
-☐ Show shortened url
-☐ Remove border after clicking "Shorten url"
-☐ Add horizontal padding to the url input (text is glued to the left border)
+  ☐ Remove border after clicking "Shorten url"
+  ☐ Replace white by almost-white
+  ☐ Add icons to share
+    ☐ Make them clickable
+    ☐ Facebook
+    ☐ Twitter
+    ☐ Whatsapp ?
+  ☐ Add responsiveness
+  ☐ Add animation while generating the short url
+    Maybe a div with the size of the shorturl div, but greyd out
+  ✔ Show shortened url @done(18-12-16 01:09)
+  ✔ Add horizontal padding to the url input (text is glued to the left border) @done(18-12-16 01:09)
+  ✔ Make the form submitable by pressing "Enter" @done(18-12-16 01:09)
 
 Server:
 ☐ Fix this
