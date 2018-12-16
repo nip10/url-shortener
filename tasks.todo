@@ -3,6 +3,7 @@ Client:
   ☐ Add validation client-side
     The validation for the url input is already done server-side, but there's no
     error message showing up on the client
+    ☐ Add invalid class to the form input
   ☐ Add animations
     ☐ while generating the short url
       Maybe a div with the size of the shorturl div, but greyd out
