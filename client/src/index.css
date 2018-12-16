@@ -8,6 +8,12 @@ body {
   margin: 0 auto;
 }
 
+@media (max-width : 768px) {
+  body {
+    max-width: 80%;
+  }
+}
+
 /* .flex-center {
   display: flex;
   align-items: center;
