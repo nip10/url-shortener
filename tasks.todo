@@ -1,14 +1,21 @@
 Client:
-  ☐ Remove border after clicking "Shorten url"
-  ☐ Replace white by almost-white
-  ☐ Add icons to share
-    ☐ Make them clickable
-    ☐ Facebook
-    ☐ Twitter
-    ☐ Whatsapp ?
-  ☐ Add responsiveness
-  ☐ Add animation while generating the short url
-    Maybe a div with the size of the shorturl div, but greyd out
+  ☐ Replace 'any' in axios response
+  ☐ Add validation client-side
+    The validation for the url input is already done server-side, but there's no
+    error message showing up on the client
+  ☐ Add animations
+    ☐ while generating the short url
+      Maybe a div with the size of the shorturl div, but greyd out
+    ☐ when adding a new shortten url to the list
+  ✔ Add responsiveness @done(18-12-16 16:56)
+  ✔ Add icons to share @done(18-12-16 15:43)
+    ✔ Make them clickable @done(18-12-16 15:43)
+    ✔ Facebook @done(18-12-16 14:49)
+    ✔ Twitter @done(18-12-16 14:49)
+    ✘ Whatsapp ? @cancelled(18-12-16 14:49)
+  ✔ Replace white by almost-white @done(18-12-16 14:49)
+  ✔ Add onclick on the shortened url to copy @done(18-12-16 15:13)
+  ✔ Remove border after clicking "Shorten url" @done(18-12-16 14:17)
   ✔ Show shortened url @done(18-12-16 01:09)
   ✔ Add horizontal padding to the url input (text is glued to the left border) @done(18-12-16 01:09)
   ✔ Make the form submitable by pressing "Enter" @done(18-12-16 01:09)
