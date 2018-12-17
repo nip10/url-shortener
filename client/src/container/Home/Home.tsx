@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import GithubCorner from 'react-github-corner';
-import Title from './Title/Title';
-import Form from './Form/Form';
-import Shortened from './Shortened/Shortened';
-import ServerError from './ServerError/ServerError';
+import Title from '../../components/Title/Title';
+import Form from '../../components/Form/Form';
+import Shortened from '../../components/Shortened/Shortened';
+import ServerError from '../../components/ServerError/ServerError';
 
 interface IAppState {
   urls: string[],
@@ -13,7 +13,7 @@ interface IAppState {
   }
 }
 
-class App extends Component<{}, IAppState> {
+class Home extends Component<{}, IAppState> {
   constructor(props: {}) {
     super(props);
     this.state = { urls: [], error: { hasError: false, message: '' } };
@@ -44,4 +44,4 @@ class App extends Component<{}, IAppState> {
   }
 }
 
-export default App;
+export default Home;

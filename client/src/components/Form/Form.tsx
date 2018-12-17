@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import Axios from 'axios';
 import './Form.css';
 
 interface IFormState {
@@ -25,7 +25,7 @@ export default class Form extends React.Component<IFormProps, IFormState> {
     event.preventDefault();
     const longUrl = this.state.url;
     try {
-      const res: any = await axios.post('/', { longUrl });
+      const res: any = await Axios.post('/', { longUrl });
       this.props.shortenUrlHandler(res.data.shortUrl);
       this.props.setErrorHandler(false, '');
     } catch (error) {
