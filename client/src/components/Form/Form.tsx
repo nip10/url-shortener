@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import Axios from 'axios';
 import './Form.css';
 
 interface IFormState {
@@ -8,6 +8,7 @@ interface IFormState {
 
 interface IFormProps {
   shortenUrlHandler: (url: string) => void,
+  setErrorHandler: (hasError: boolean, message: string) => void,
 }
 
 export default class Form extends React.Component<IFormProps, IFormState> {
@@ -24,18 +25,22 @@ export default class Form extends React.Component<IFormProps, IFormState> {
     event.preventDefault();
     const longUrl = this.state.url;
     try {
-      const res: any = await axios.post('/', { longUrl });
+      const res: any = await Axios.post('/', { longUrl });
       this.props.shortenUrlHandler(res.data.shortUrl);
+      this.props.setErrorHandler(false, '');
     } catch (error) {
-      console.log('Error:', error);
-      // TODO: Add error handling
+      if (error.response.status === 400) {
+        this.props.setErrorHandler(true, error.response.data.error);
+      } else {
+        this.props.setErrorHandler(true, 'Server error');
+      }
     }
   }
 
   public render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input className="form-input-url" type="text" value={this.state.url} onChange={this.handleChange} placeholder="Your original URL here"/>
+        <input className="form-input-url" type="text" value={this.state.url} onChange={this.handleChange} placeholder="Your original URL here" required/>
         <button className="form-submit-url" type="submit"> Shorten Url </button>
       </form>
     );
