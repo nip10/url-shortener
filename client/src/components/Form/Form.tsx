@@ -1,5 +1,5 @@
 import React from 'react';
-import Axios from 'axios';
+import Axios, { AxiosResponse } from 'axios';
 import classNames from 'classnames';
 import './Form.css';
 
@@ -15,6 +15,10 @@ interface IFormState {
 interface IFormProps {
   shortenUrlHandler: (url: string) => void,
   errorHandler: (message: string) => void,
+}
+
+interface IShortUrlResponse {
+  shortUrl: string,
 }
 
 export default class Form extends React.Component<IFormProps, IFormState> {
@@ -36,7 +40,7 @@ export default class Form extends React.Component<IFormProps, IFormState> {
       return;
     }
     try {
-      const res: any = await Axios.post(BASE_URL, { longUrl });
+      const res: AxiosResponse<IShortUrlResponse> = await Axios.post(BASE_URL, { longUrl });
       this.props.shortenUrlHandler(res.data.shortUrl);
       this.props.errorHandler('');
       this.setState({ ...this.state, validationError: false });
