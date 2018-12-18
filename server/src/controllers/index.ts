@@ -12,7 +12,7 @@ const getUrl = async (req: Request, res: Response) => {
   try {
     const { url } = await Url.findByIdAndUpdate(id, update);
     logger.info(`Requested shortUrl ${shortUrl} for ${url}`);
-    return res.json({ url });
+    return res.redirect(url);
   } catch (e) {
     logger.error(`Url "${shortUrl}" (decoded id: ${id}) not found.`);
     return res.sendStatus(404);
@@ -20,9 +20,14 @@ const getUrl = async (req: Request, res: Response) => {
 }
 
 const saveUrl = async (req: Request, res: Response) => {
-  const longUrl = _.get(req.body, 'longUrl');
+  let longUrl = _.get(req.body, 'longUrl');
   if (!_.isString(longUrl) || !isURL(longUrl)) {
     return res.status(400).json({ error: 'Url is undefined or not formatted properly.' });
+  }
+  if (!isURL(longUrl, { require_protocol: true })) {
+    // This means that the url is valid but doesn't have the protocol (http/https)
+    // We assume that the url has https enabled, since its almost 2019
+    longUrl = `https://${longUrl}`;
   }
   const url = new Url({ url: longUrl });
   try {
