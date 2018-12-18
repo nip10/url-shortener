@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import express, { Request, Response, NextFunction } from 'express';
 import _ from 'lodash';
 import helmet from 'helmet';
+import cors from 'cors';
 
 import urls from './routes/index';
 
@@ -12,6 +13,18 @@ const isProd = NODE_ENV === 'production';
 
 const app = express();
 
+const whitelist = ['http://localhost:3005', 'http://localhost:3000'];
+const corsOptions = {
+  origin: (origin: any, callback: any) => {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}
+
+app.use(cors(corsOptions));
 app.use(helmet());
 
 app.use(bodyParser.json());
