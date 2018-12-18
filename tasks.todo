@@ -1,17 +1,20 @@
 Client:
-  ☐ Fix CORS issue
-    Access to XMLHttpRequest at 'http://localhost:3005/8' from origin 'http://localhost:3000' has been blocked by
-    CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
-  ☐ Investigate double 404 error when navigating to a non-existent shortUrl
-  ☐ Replace 'any' in axios response
-  ☐ Add validation client-side
-    The validation for the url input is already done server-side, but there's no
-    error message showing up on the client
-    ☐ Add invalid class to the form input
+  ☐ Show number of shortened urls
+  ☐ Style the error message
   ☐ Add animations
     ☐ while generating the short url
       Maybe a div with the size of the shorturl div, but greyd out
     ☐ when adding a new shortten url to the list
+  ✔ Fix CORS issue @done(18-12-17 23:43)
+    Access to XMLHttpRequest at 'http://localhost:3005/8' from origin 'http://localhost:3000' has been blocked by
+    CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+  ✘ Investigate double 404 error when navigating to a non-existent shortUrl @cancelled(18-12-17 23:44)
+    This was happening when I had containers and was doing the redirection client-side.
+    Since I'm no longer doing that, this is not an issue anymore.
+  ✔ Add validation client-side @done(18-12-18 00:08)
+    The validation for the url input is already done server-side, but there's no
+    error message showing up on the client
+    ✔ Add invalid class to the form input @done(18-12-18 00:08)
   ✔ Add router @done(18-12-17 12:34)
     ✔ Add 2 routes @done(18-12-17 12:34)
       ✔ / @done(18-12-17 12:34)
@@ -33,5 +36,12 @@ Client:
   ✔ Make the form submitable by pressing "Enter" @done(18-12-16 01:09)
 
 Server:
-☐ Fix this
-  {"message":"Url \"favicon.ico\" (decoded id: 1308184420381532400) not found.","level":"error"}
+  ☐ Fix this
+    {"message":"Url \"favicon.ico\" (decoded id: 1308184420381532400) not found.","level":"error"}
+
+Global:
+  ✔ Remove all 'any' keywords @done(18-12-18 00:25)
+    Express error is supposed to be 'any'
+
+Ideas:
+  ☐ Add authentication to track previously generated urls and stats
