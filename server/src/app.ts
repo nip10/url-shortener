@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import express, { Request, Response, NextFunction } from 'express';
 import _ from 'lodash';
 import helmet from 'helmet';
-import cors from 'cors';
+import cors, { CorsOptions } from 'cors';
 
 import urls from './routes/index';
 
@@ -19,8 +19,8 @@ const whitelist = [
   'http://localhost:3000',
   'https://api.sh.diogocardoso.me'
 ];
-const corsOptions = {
-  origin: (origin: any, callback: any) => {
+const corsOptions: CorsOptions = {
+  origin: (origin, callback) => {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
