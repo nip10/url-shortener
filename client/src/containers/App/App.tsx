@@ -1,9 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import GithubCorner from 'react-github-corner';
-import Title from './components/Title/Title';
-import Form from './components/Form/Form';
-import Shortened from './components/Shortened/Shortened';
-import Error from './components/Error/Error';
+import Title from '../../components/Title/Title';
+import Form from '../../components/Form/Form';
+import Shortened from '../../components/Shortened/Shortened';
+import Error from '../../components/Error/Error';
+import 'normalize.css';
+import './App.css';
 
 interface IAppState {
   urls: string[],
