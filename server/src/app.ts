@@ -13,7 +13,12 @@ const isProd = NODE_ENV === 'production';
 
 const app = express();
 
-const whitelist = ['http://localhost:3005', 'http://localhost:3000'];
+const whitelist = [
+  'http://localhost:3005',
+  'https://sh.diogocardoso.me',
+  'http://localhost:3000',
+  'https://api.sh.diogocardoso.me'
+];
 const corsOptions = {
   origin: (origin: any, callback: any) => {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
