@@ -1,20 +1,26 @@
 import React from 'react';
 import Axios from 'axios';
+import classNames from 'classnames';
 import './Form.css';
 
+const isDev = process.env.NODE_ENV === "development";
+const BASE_URL = isDev ? "http://localhost:3005/" : "https://sh.diogocardoso.me/";
+
 interface IFormState {
-  url: string
+  url: string,
+  lastUrl: string,
+  validationError: boolean,
 }
 
 interface IFormProps {
   shortenUrlHandler: (url: string) => void,
-  setErrorHandler: (hasError: boolean, message: string) => void,
+  errorHandler: (message: string) => void,
 }
 
 export default class Form extends React.Component<IFormProps, IFormState> {
   constructor(props: IFormProps) {
     super(props);
-    this.state = { url: '' };
+    this.state = { url: '', lastUrl: '', validationError: false };
   }
 
   private handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,23 +30,34 @@ export default class Form extends React.Component<IFormProps, IFormState> {
   private handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const longUrl = this.state.url;
+    const lastUrl = this.state.lastUrl;
+    if (longUrl === lastUrl) {
+      this.props.errorHandler('You already submitted this URL.');
+      return;
+    }
     try {
-      const res: any = await Axios.post('/', { longUrl });
+      const res: any = await Axios.post(BASE_URL, { longUrl });
       this.props.shortenUrlHandler(res.data.shortUrl);
-      this.props.setErrorHandler(false, '');
+      this.props.errorHandler('');
+      this.setState({ ...this.state, validationError: false });
     } catch (error) {
       if (error.response.status === 400) {
-        this.props.setErrorHandler(true, error.response.data.error);
+        this.props.errorHandler('Invalid URL.');
+        this.setState({ ...this.state, validationError: true });
       } else {
-        this.props.setErrorHandler(true, 'Server error');
+        this.props.errorHandler('Server error. Please try again.');
+        this.setState({ ...this.state, validationError: false });
       }
     }
   }
 
   public render() {
+    const inputClass = classNames('form-input-url', {
+      'form-input-url-invalid': this.state.validationError,
+    });
     return (
       <form onSubmit={this.handleSubmit}>
-        <input className="form-input-url" type="text" value={this.state.url} onChange={this.handleChange} placeholder="Your original URL here" required/>
+        <input className={inputClass} type="text" value={this.state.url} onChange={this.handleChange} placeholder="Your original URL here" required/>
         <button className="form-submit-url" type="submit"> Shorten Url </button>
       </form>
     );

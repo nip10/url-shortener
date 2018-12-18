@@ -5,10 +5,15 @@ form {
 .form-input-url {
   width: calc(100% - 10rem);
   height: 2rem;
-  padding: 0;
+  padding: 1px;
   border: none;
   text-indent: 1rem;
   background-color: #fdfdfd;
+  box-sizing: border-box;
+}
+
+.form-input-url-invalid {
+  border: 1px solid red;
 }
 
 .form-submit-url {
