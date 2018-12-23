@@ -20,6 +20,7 @@ after_success:
   - cd ..
 before_deploy:
   - pip install --user awscli
+  - ls -al
 notifications:
   email: false
 deploy:
