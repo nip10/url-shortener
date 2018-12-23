@@ -19,6 +19,7 @@ after_success:
   - bash <(curl -s https://codecov.io/bash)
 before_deploy:
   - pip install --user awscli
+  - cd client
 notifications:
   email: false
 deploy:
@@ -30,7 +31,7 @@ deploy:
   bucket: sh.diogocardoso.me
   skip_cleanup: true
   region: eu-west-2
-  local_dir: client/build
+  local_dir: build
 env:
   global:
     - secure: "hLY6d7EpQC165jedLBzaZnNli8xQya3HmPmnpNuCMiei9WmT4/XIlUAsPfGZQVBGTQBIOlXKkvQAX+ldEdnWYErBimVjuT4nscqrBaPn6oeHHpDo2DBf/kvF5Fw1m8GToTAPcIoCAubvCrAlC9QN8e8V/z/WsThOVLYjMgADmBncOZlv7/KrRsuiglgK7QZyek5ywkFPR4VDIwLgt8nIefNv+bnu07SrNeUX7dTWGbnI3z045g6tL9AfU37zFUjR4iHMe1vdOI8igiA/RMA8NWq1+Av2tz9JOUHqTnNM52rIGR3xHIBRiRq9sZQw37YfV6bevq34lQLNg+En+ER7fydxvUng36BEVGXcYaAKfOdRjotvALF8TbU4cpqMSH2EjFV/DRtZWjtSZbYnss6chQW9wjsyIlCTQxOwJNeDEMZwHdepDalPDG+b1JXO8duS8Zb+0p1si7V6HdyjbYbZ0OyIF/JsN21K4oPXRU//xP6KCHaUQzWEBHJ4EPKEJdYL463apsUwxsT7fv9+Tpc4xFSCvicI1KWUjTXvWNhuMS6Zel7HfwsowwqeMi1/jiDmZij7dJDTXiibx3Im8C9ktWiaZh5Mu+fEOhoI5951yQnRgVUOCZiGpv8xjmjrMIt8tPTrKm6YAUyoS8nV24w1D8JB4XeF+MI3a0+NEQ0VBCU="
