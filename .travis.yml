@@ -19,7 +19,7 @@ after_success:
   - bash <(curl -s https://codecov.io/bash)
 before_deploy:
   - pip install --user awscli
-  - cd client
+  - cd ../client
 notifications:
   email: false
 deploy:
