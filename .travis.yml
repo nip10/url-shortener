@@ -1,40 +1,57 @@
-language: node_js
-node_js:
-  - '10'
-sudo: false
-cache:
-  yarn: true
-  directories:
-    - 'node_modules'
-services:
-  - mongodb
-script:
-  - yarn global add codecov
-  - yarn lint
-  - yarn test:coverage
-before_install:
-  - cd server
-  - yarn
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
-  - cd ..
-before_deploy:
-  - pip install --user awscli
-  - ls -al
-notifications:
-  email: false
-deploy:
-  provider: s3
-  access_key_id:
-    secure: "bWsJuVX+M3amMo5OQS+rOn7FinysMkG8ftkBYJfVpHW8J2zDMvf1UAWbUU1of04aiRrXLoQ0p5Rn1NGZkFEH3uiZR2frN9wvNjAMEClrNR83AqdEqWz8iQcJLiuJaqwbGtLN3hwVkuEECxwv3OGfI6JKRfZvHS6ulGsAY7wASi5kw4n9BtaBUtPD2iX/xg+Jw9Svir9V8Uuda/lH/HKxmo8xi5S8qxYu+RbF8/dDRVSnCgUKjJny8fqVdHtcO/ezUhQ6yM7ust0AUEAci9ouQ/ym1UpYFY9Si8oMqRvFAwBT5CbD5J4XeJi//+bJmokC+lIob204S7w8fbEKCf8YpJKLSXmB8v90RKeuYlNwxv0lwIgAXIUN99GMwoeZBNxZW6a7YyBCKJWcvm280wux2U74h2fx1ILO64TSEIwxwtlKqW6Dg9KxtCy/1T12fyrjX/0okyBky4QgQeNw9qKlVYRUSX/3o0SunI6CKBXVf1Dhf9p41xA07KWaTfqvFQdo3sDdGXZE3EiObwDFPmPnfw+fodlT3MS9yGAzi/DbaNq8a7LKZLF3VePq7ilTleQ2U9hROyp5ZOVqidDLNAT6rGhKg2F9gPDG89hmJiWiF3hHi9+ehMGhb/6uF7xVPOU41/B6lVx5By+37QJq4nHi2GzFtFSjatCSGmXrE8+vs0A="
-  secret_access_key:
-    secure: "rgr1LdkkMtokkDo6SvPTFSqsm/tLVFnzs5OEYCP70qat6fw4DiSnGeNQhzBq3uSiwitzymir+0w1h85SYx7zPvaGkJah9pLR0z4ZQjlWy7jD7TY/ncq2UBA77By5gPeFWZz7JfbLk2cO8jRINqeHQU24QfMwIC5O1rLQBBquceA7E1XCfp70AyI0AxpvdJ3DJ2s1Kh1R2OZhEWhZ6Iskwe09uwmeELCZxpH68Hk5uq/x6EApiFf04xZTEDSZKX8EzAactYgPvEJBMsD4h4QVj0tNrxIwkwPATrjJU90O/ILfaNnjMDdOJTVsVocKEEFBAqbrFGIcjtoT/40kkeKrXZmyjrQlAccm0H6kuY6W6cd4lJ2/IEVf+yH60SBTo438iqkfioHp4gOjpEHPcIq5RFEP/oj6ZNpAHMsG3Yf7P1GtKryM2X8mbeaDTQ8Hfcf0hjVyIBMsg4Thas8G0a+JP76wQof5FCYB385G7xcDWZ+0sbWlgkVfmDEfZJ+lPub1DwAh4koCBq9HmcioP8qdUCW2KKDtzdSiEx6CjCh7t2fK7ddnHFtWNAPBJMytuWoO8gWtKnWLiPh8U3afJBiJcsA7/P4cc9GJ2EHnNthckACccUhkQcjUGCik2tjGlbpvpnhoTzmCTJpKKqmtQtUjfVWM+y0PkbZ1B+fwno7oLyY="
-  bucket: sh.diogocardoso.me
-  skip_cleanup: true
-  region: eu-west-2
-  local_dir: client/build
 env:
   global:
     - secure: "hLY6d7EpQC165jedLBzaZnNli8xQya3HmPmnpNuCMiei9WmT4/XIlUAsPfGZQVBGTQBIOlXKkvQAX+ldEdnWYErBimVjuT4nscqrBaPn6oeHHpDo2DBf/kvF5Fw1m8GToTAPcIoCAubvCrAlC9QN8e8V/z/WsThOVLYjMgADmBncOZlv7/KrRsuiglgK7QZyek5ywkFPR4VDIwLgt8nIefNv+bnu07SrNeUX7dTWGbnI3z045g6tL9AfU37zFUjR4iHMe1vdOI8igiA/RMA8NWq1+Av2tz9JOUHqTnNM52rIGR3xHIBRiRq9sZQw37YfV6bevq34lQLNg+En+ER7fydxvUng36BEVGXcYaAKfOdRjotvALF8TbU4cpqMSH2EjFV/DRtZWjtSZbYnss6chQW9wjsyIlCTQxOwJNeDEMZwHdepDalPDG+b1JXO8duS8Zb+0p1si7V6HdyjbYbZ0OyIF/JsN21K4oPXRU//xP6KCHaUQzWEBHJ4EPKEJdYL463apsUwxsT7fv9+Tpc4xFSCvicI1KWUjTXvWNhuMS6Zel7HfwsowwqeMi1/jiDmZij7dJDTXiibx3Im8C9ktWiaZh5Mu+fEOhoI5951yQnRgVUOCZiGpv8xjmjrMIt8tPTrKm6YAUyoS8nV24w1D8JB4XeF+MI3a0+NEQ0VBCU="
     - secure: "IGDLrHaKjurOv2L4oLiaTljD6MHAO83qTftUqup748jKiKsvg2zFd7Hnwcd66yebCkOrOvf6hTnzzl9meCm4UhnThZGGyglSL+43fpvt7EoOmfVKR8ZWReB1h0spros3FnsP0Yad72dKkyTYHRVHWUZZCtVOmUU6i6rsWrjM8bIs6vvivl6ItrfP202okLPRoBhON71S+fIFkMSdI7LZ/FrwtnttQxK/C1hobCJsE32cGW/PnL7ZqLt5ROGZcq5cFkhn7x3Ygd+DAOnVcyoT3McCaugNl3mEG6+ozP1n9ByXRNt7vSgGFTyN8W8Do8r/tv9Jca4yl+djQTQzY2zTzsd4hjlnNdz6L6Z5GO6QNinkCGYkb0ZkNnCGaJf7U3B5gtcTI2ceIRedlWAToQBrV+F9nu3POILoTzqbZdxEoWysvfhuql5jSsrdue+zIVQ5QrFgMlNNNpLSN7/XcLSNQHKCFOA8GF16Y1G42cuBFk1iYUsErcec/RlyiXZVrteHAD2hKhxsh+LiDx00TT/O8/CWIevJAKhpn/ZH6tFOUDnmOsiI+K5V8tQT0tnKb+jI2Jsf+rNTz/c7FxwqYSMa+afOUr1bAv9Jjre0oiPYaloSHqcbco6RffK1uWVz3YHrKx55HzBxj9AucoKzrelJhv9af7bKjIGPZyUvoXdP4tw="
     - secure: "GL6Oq22PuElpsutHpHuWzYBLachMEWaNv0Hg0uZnocI8LAMmzmBbJUmgG8AcMMaRVJRr+9INz3yy7AjgZSyYkj0dYLagY5Y0iW3GZoXPn8SME++hzMEQKlTeYDktVGdVGZyq6clOLaIUbd5XU+dMz4efiZoXm6K9KvhCGCB0X9+pV4Up9pHkkn2HE6Xo2QIvCptPePRo9bem4/hJo+TodDPalbtb7Quez55sjGes1yLSMGgrctNuq7VvG7yvhb54Dx1o7+bwnI+Gm5lMvzNVQ9gKzcsy3pCzYgIsZjLT6dNFj68JQ5PTM71Psm7xR1tzFiWnEtKP1y6QQ1vzlTb/zfIcZEf96EJclBVtVjzBr1v3+Pa2rsTGgOvKJN0dB7Q5wJu32MkS86CTuUeoVoJyqAp3L378LEcdtpQhTurocPXyexkNL/aUunk+imUK+mpo2w0pqP0ugLPadkui5raG9mW+3v7FXsN4EH4NqIVISL0g8OUsOHDCw2KE3z3oQiwoQ2bXeOOjVWMxrs8BbK9VxNz5SaHT9FT3pOeBoyxt4w2VZfWQnke4ejWDfsh+U7Lt+d52yfmV8Mv/c6kRc/D13/UJ9vtpx4K4SrRqB7aJEw6ryNShOoZRyB7K993l9nm3/6dCv99O2AX13Nvph7q8Vr3nO2EDadfr2QjHa7CSq58="
+notifications:
+  email: false
+jobs:
+  include:
+    - stage: Server tests
+        language: node_js
+        node_js:
+          - '10'
+        sudo: false
+        cache:
+          yarn: true
+          directories:
+            - 'node_modules'
+        services:
+          - mongodb
+        before_install:
+          - cd server
+          - yarn
+        script:
+          - yarn global add codecov
+          - yarn lint
+          - yarn test:coverage
+        after_success:
+          - bash <(curl -s https://codecov.io/bash)
+    - stage: Client tests
+      language: node_js
+        node_js:
+          - '10'
+        sudo: false
+        cache:
+          yarn: true
+          directories:
+            - 'node_modules'
+        before_install:
+          - cd client
+          - yarn
+        script:
+          - yarn build
+    - stage: Deploy to s3
+      script: skip
+      before_deploy:
+        - pip install --user awscli
+      deploy:
+        provider: s3
+        access_key_id:
+          secure: "bWsJuVX+M3amMo5OQS+rOn7FinysMkG8ftkBYJfVpHW8J2zDMvf1UAWbUU1of04aiRrXLoQ0p5Rn1NGZkFEH3uiZR2frN9wvNjAMEClrNR83AqdEqWz8iQcJLiuJaqwbGtLN3hwVkuEECxwv3OGfI6JKRfZvHS6ulGsAY7wASi5kw4n9BtaBUtPD2iX/xg+Jw9Svir9V8Uuda/lH/HKxmo8xi5S8qxYu+RbF8/dDRVSnCgUKjJny8fqVdHtcO/ezUhQ6yM7ust0AUEAci9ouQ/ym1UpYFY9Si8oMqRvFAwBT5CbD5J4XeJi//+bJmokC+lIob204S7w8fbEKCf8YpJKLSXmB8v90RKeuYlNwxv0lwIgAXIUN99GMwoeZBNxZW6a7YyBCKJWcvm280wux2U74h2fx1ILO64TSEIwxwtlKqW6Dg9KxtCy/1T12fyrjX/0okyBky4QgQeNw9qKlVYRUSX/3o0SunI6CKBXVf1Dhf9p41xA07KWaTfqvFQdo3sDdGXZE3EiObwDFPmPnfw+fodlT3MS9yGAzi/DbaNq8a7LKZLF3VePq7ilTleQ2U9hROyp5ZOVqidDLNAT6rGhKg2F9gPDG89hmJiWiF3hHi9+ehMGhb/6uF7xVPOU41/B6lVx5By+37QJq4nHi2GzFtFSjatCSGmXrE8+vs0A="
+        secret_access_key:
+          secure: "rgr1LdkkMtokkDo6SvPTFSqsm/tLVFnzs5OEYCP70qat6fw4DiSnGeNQhzBq3uSiwitzymir+0w1h85SYx7zPvaGkJah9pLR0z4ZQjlWy7jD7TY/ncq2UBA77By5gPeFWZz7JfbLk2cO8jRINqeHQU24QfMwIC5O1rLQBBquceA7E1XCfp70AyI0AxpvdJ3DJ2s1Kh1R2OZhEWhZ6Iskwe09uwmeELCZxpH68Hk5uq/x6EApiFf04xZTEDSZKX8EzAactYgPvEJBMsD4h4QVj0tNrxIwkwPATrjJU90O/ILfaNnjMDdOJTVsVocKEEFBAqbrFGIcjtoT/40kkeKrXZmyjrQlAccm0H6kuY6W6cd4lJ2/IEVf+yH60SBTo438iqkfioHp4gOjpEHPcIq5RFEP/oj6ZNpAHMsG3Yf7P1GtKryM2X8mbeaDTQ8Hfcf0hjVyIBMsg4Thas8G0a+JP76wQof5FCYB385G7xcDWZ+0sbWlgkVfmDEfZJ+lPub1DwAh4koCBq9HmcioP8qdUCW2KKDtzdSiEx6CjCh7t2fK7ddnHFtWNAPBJMytuWoO8gWtKnWLiPh8U3afJBiJcsA7/P4cc9GJ2EHnNthckACccUhkQcjUGCik2tjGlbpvpnhoTzmCTJpKKqmtQtUjfVWM+y0PkbZ1B+fwno7oLyY="
+        bucket: sh.diogocardoso.me
+        skip_cleanup: true
+        region: eu-west-2
+        local_dir: client/build
