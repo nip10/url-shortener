@@ -11,13 +11,10 @@ describe('GET /:shortUrl', () => {
   // Populate urls collection
   beforeEach(populateUrls);
 
-  it('should return 200 and longUrl', done =>
+  it('should return 302 (redirect) if shortUrl exists', done =>
     request(app)
       .get(`/${shortUrls[0]}`)
-      .expect(200)
-      .expect((res: Response) => {
-        expect(res.body.url).toBe(urls[0].url);
-      })
+      .expect(302)
       .end(async (err, res) => {
         if (err) { return done(err); }
         try {
