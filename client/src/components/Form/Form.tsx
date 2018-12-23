@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import './Form.css';
 
 const isDev = process.env.NODE_ENV === "development";
-const BASE_URL = isDev ? "http://localhost:3005/" : "https://sh.diogocardoso.me/";
+const API_BASE_URL = isDev ? "http://localhost:3005/" : "https://api.sh.diogocardoso.me/";
 
 interface IFormState {
   url: string,
@@ -40,7 +40,7 @@ export default class Form extends React.Component<IFormProps, IFormState> {
       return;
     }
     try {
-      const res: AxiosResponse<IShortUrlResponse> = await Axios.post(BASE_URL, { longUrl });
+      const res: AxiosResponse<IShortUrlResponse> = await Axios.post(API_BASE_URL, { longUrl });
       this.props.shortenUrlHandler(res.data.shortUrl);
       this.props.errorHandler('');
       this.setState({ ...this.state, validationError: false });
