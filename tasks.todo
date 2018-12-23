@@ -5,6 +5,7 @@ Client:
     ☐ while generating the short url
       Maybe a div with the size of the shorturl div, but greyd out
     ☐ when adding a new shortten url to the list
+    ☐ On hover (clickable stuff)
   ✔ Fix CORS issue @done(18-12-17 23:43)
     Access to XMLHttpRequest at 'http://localhost:3005/8' from origin 'http://localhost:3000' has been blocked by
     CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
