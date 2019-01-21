@@ -16,8 +16,7 @@ const app = express();
 const whitelist = [
   'http://localhost:3005',
   'https://sh.diogocardoso.me',
-  'http://localhost:3000',
-  'https://api.sh.diogocardoso.me'
+  'https://www.sh.diogocardoso.me',
 ];
 const corsOptions: CorsOptions = {
   origin: (origin, callback) => {
