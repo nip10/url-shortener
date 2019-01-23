@@ -8,15 +8,15 @@ import cors, { CorsOptions } from 'cors';
 import urls from './routes/index';
 
 dotenv.config();
-const { NODE_ENV } = process.env;
+const { NODE_ENV, BASE_URL } = process.env;
 const isProd = NODE_ENV === 'production';
 
 const app = express();
 
 const whitelist = [
   'http://localhost:3005',
-  'https://sh.diogocardoso.me',
-  'https://www.sh.diogocardoso.me',
+  `https://${BASE_URL}`,
+  `https://www.${BASE_URL}`,
 ];
 const corsOptions: CorsOptions = {
   origin: (origin, callback) => {
