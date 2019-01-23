@@ -1,3 +1,6 @@
+Readme:
+  ☐ Add recording
+    Record the shortening action. Use something like Recordit
 Client:
   ☐ Show number of shortened urls
   ☐ Style the error message
@@ -39,6 +42,7 @@ Client:
 Server:
   ☐ Fix this
     {"message":"Url \"favicon.ico\" (decoded id: 1308184420381532400) not found.","level":"error"}
+  ☐ Remove hardcoded URLs
 
 Global:
   ✔ Remove all 'any' keywords @done(18-12-18 00:25)
