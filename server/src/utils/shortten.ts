@@ -1,10 +1,10 @@
 // from: https://github.com/delight-im/ShortURL/blob/master/JavaScript/ShortURL.js
 
-const alphabet = '23456789bcdfghjkmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ-_';
+const alphabet = "23456789bcdfghjkmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ-_";
 const base = alphabet.length;
 
 const encode = (num: number) => {
-  let str = '';
+  let str = "";
   while (num > 0) {
     str = alphabet.charAt(num % base) + str;
     num = Math.floor(num / base);
