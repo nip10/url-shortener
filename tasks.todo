@@ -2,13 +2,19 @@ Readme:
   ☐ Add recording
     Record the shortening action. Use something like Recordit
 Client:
-  ☐ Show number of shortened urls
+  ✔ Show number of shortened urls @done(19-03-13 18:29)
+  ☐ Save the generated short urls in localstorage
+  ☐ Show the original url
+    Maybe add an icon "i" that will show the original url while pressed (in the div where the shorturl is shown)
   ☐ Style the error message
   ☐ Add animations
-    ☐ while generating the short url
+    ☐ While generating the short url
       Maybe a div with the size of the shorturl div, but greyd out
-    ☐ when adding a new shortten url to the list
-    ☐ On hover (clickable stuff)
+    ☐ When adding a new shortten url to the list
+      I've added some animations for this, but it's not working 100%. When adding a 2nd item to the list,
+      the animation happens on the bottom item, while the top item is added without any animation.
+      When adding a 2nd+ item, the others should slide down (not fade) and the full animation run on that item.
+    ✔ On hover (clickable stuff) @done(19-03-13 18:31)
   ✔ Fix CORS issue @done(18-12-17 23:43)
     Access to XMLHttpRequest at 'http://localhost:3005/8' from origin 'http://localhost:3000' has been blocked by
     CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
