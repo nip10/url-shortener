@@ -14,7 +14,7 @@ const isProd = NODE_ENV === "production";
 const app = express();
 
 const whitelist = [
-  "http://localhost:3005",
+  "http://localhost:3000",
   `https://${BASE_URL}`,
   `https://www.${BASE_URL}`
 ];
