@@ -1,5 +1,5 @@
-import React from 'react';
-import './Title.css';
+import React from "react";
+import "./Title.css";
 
 export default function Title() {
   return (
@@ -7,5 +7,5 @@ export default function Title() {
       <h1> URL Shortener </h1>
       <h3>Simplify your links</h3>
     </div>
-  )
+  );
 }

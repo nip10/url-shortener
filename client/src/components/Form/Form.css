@@ -30,7 +30,7 @@ form {
   outline: none;
 }
 
-@media (max-width : 768px) {
+@media (max-width: 768px) {
   .form-input-url {
     display: block;
     width: 100%;
