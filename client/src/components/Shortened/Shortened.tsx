@@ -46,7 +46,7 @@ export default function Shortened({ url, elId }: IShortenedProps) {
   return (
     <div className="shortened__container">
       <div className="shortened__container-url">
-        <a id={elId} target="_blank" rel="noopener noreferrer" href={buildFullUrl(url)}>
+        <a id={elId} target="_blank" rel="nofollow noopener noreferrer" href={buildFullUrl(url)}>
           {buildFullUrl(url)}
         </a>
       </div>
