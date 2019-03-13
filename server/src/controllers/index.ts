@@ -6,7 +6,13 @@ import _ from "lodash";
 import { isURL } from "validator";
 
 const getUrl = async (req: Request, res: Response) => {
-  const { shortUrl } = req.params;
+  const shortUrl = _.get(req.params, "shortUrl");
+  if (!_.isString(shortUrl)) {
+    // TODO: This should redirect to the homepage and show an error message
+    // Something like this..
+    // return res.redirect("https://sh.diogocardoso.me/?error=BAD_REQUEST");
+    return res.sendStatus(400);
+  }
   const id = decode(shortUrl);
   const update = { $inc: { hits: 1 } };
   try {
@@ -15,6 +21,9 @@ const getUrl = async (req: Request, res: Response) => {
     return res.redirect(url);
   } catch (e) {
     logger.error(`Url "${shortUrl}" (decoded id: ${id}) not found.`);
+    // TODO: This should redirect to the homepage and show an error message
+    // Something like this..
+    // return res.redirect("https://sh.diogocardoso.me/?error=NOT_FOUND");
     return res.sendStatus(404);
   }
 };
@@ -43,4 +52,13 @@ const saveUrl = async (req: Request, res: Response) => {
   }
 };
 
-export { getUrl, saveUrl };
+const getStats = async (req: Request, res: Response) => {
+  try {
+    const numUrls = await Url.estimatedDocumentCount();
+    return res.json({ numUrls });
+  } catch (error) {
+    return res.status(400);
+  }
+};
+
+export { getUrl, saveUrl, getStats };
