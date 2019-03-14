@@ -1,11 +1,11 @@
 language: node_js
 node_js:
-  - '10'
+  - "10"
 sudo: false
 cache:
   yarn: true
   directories:
-    - 'node_modules'
+    - "node_modules"
 services:
   - mongodb
 before_install:
@@ -19,7 +19,6 @@ after_success:
   - bash <(curl -s https://codecov.io/bash)
   - cd ..
 before_deploy:
-  - pip install --user awscli
   - cd client
   - yarn
   - yarn build
