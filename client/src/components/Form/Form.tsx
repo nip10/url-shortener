@@ -4,7 +4,7 @@ import classNames from "classnames";
 import "./Form.css";
 
 const isDev = process.env.NODE_ENV === "development";
-const API_BASE_URL = isDev ? "http://localhost:3005/" : "https://www.api.sh.diogocardoso.me/";
+const API_BASE_URL = isDev ? "http://localhost:3001/" : "https://www.api.sh.diogocardoso.me/";
 
 interface IFormState {
   url: string;

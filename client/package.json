@@ -25,7 +25,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy": "http://localhost:3005",
+  "proxy": "http://localhost:3001",
   "homepage": "https://sh.diogocardoso.me",
   "browserslist": [
     ">0.2%",

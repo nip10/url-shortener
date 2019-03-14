@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Shortened.css";
 
 const isDev = process.env.NODE_ENV === "development";
-const API_BASE_URL = isDev ? "http://localhost:3005/" : "https://api.sh.diogocardoso.me/";
+const API_BASE_URL = isDev ? "http://localhost:3001/" : "https://api.sh.diogocardoso.me/";
 
 interface IShortenedProps {
   url: string;
