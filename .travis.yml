@@ -24,9 +24,10 @@ script:
   - yarn test:coverage
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-  - echo CF_DISTRIBUTION_ID
-  - echo aws_access_key_id=${AWS_ACCESS_KEY} aws_secret_access_key=${AWS_SECRET_ACCESS_KEY} aws s3 rm s3://sh.diogocardoso.me --recursive --region eu-west-2
-  - aws_access_key_id=${AWS_ACCESS_KEY} aws_secret_access_key=${AWS_SECRET_ACCESS_KEY} aws s3 rm s3://sh.diogocardoso.me --recursive --region eu-west-2
+  - echo ${CF_DISTRIBUTION_ID}
+  - /usr/bin/python -V
+  - /usr/bin/python3 -V
+  - aws_access_key_id=${AWS_ACCESS_KEY_ID} aws_secret_access_key=${AWS_SECRET_ACCESS_KEY} aws s3 rm s3://sh.diogocardoso.me --recursive --region eu-west-2
 before_deploy:
   - cd ../client
 notifications:
@@ -44,7 +45,7 @@ deploy:
   # Deploy a single folder and not the entire project
   local_dir: build
 after_deploy:
-  - AWS_ACCESS_KEY_ID={$AWS_ACCESS_KEY} AWS_SECRET_ACCESS_KEY={$AWS_SECRET_ACCESS_KEY} aws cloudfront create-invalidation --distribution-id ${CF_DISTRIBUTION_ID} --paths /*
+  - AWS_ACCESS_KEY_ID={$AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY={$AWS_SECRET_ACCESS_KEY} aws cloudfront create-invalidation --distribution-id ${CF_DISTRIBUTION_ID} --paths /*
 env:
   global:
     # Port
