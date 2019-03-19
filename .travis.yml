@@ -2,8 +2,6 @@
 language: node_js
 node_js:
   - "10"
-python:
-  - "3.4.3"
 sudo: false
 cache:
   yarn: true
@@ -11,9 +9,6 @@ cache:
     - "node_modules"
 services:
   - mongodb
-before_install:
-  - /usr/bin/python -V
-  - /usr/bin/python3 -V
 install:
   - yarn global add codecov
   - cd server
@@ -49,7 +44,7 @@ deploy:
   # Deploy a single folder and not the entire project
   local_dir: build
 after_deploy:
-  - AWS_ACCESS_KEY_ID={$AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY={$AWS_SECRET_ACCESS_KEY} aws cloudfront create-invalidation --distribution-id ${CF_DISTRIBUTION_ID} --paths /*
+  - aws_access_key_id=${AWS_ACCESS_KEY_ID} aws_secret_access_key=${AWS_SECRET_ACCESS_KEY} aws cloudfront create-invalidation --distribution-id ${CF_DISTRIBUTION_ID} --paths /*
 env:
   global:
     # Port
