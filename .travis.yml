@@ -1,6 +1,9 @@
+# dist: xenial
 language: node_js
 node_js:
   - "10"
+# python:
+#   -
 sudo: false
 cache:
   yarn: true
@@ -8,6 +11,9 @@ cache:
     - "node_modules"
 services:
   - mongodb
+before_install:
+  - /usr/bin/python -V
+  - /usr/bin/python3 -V
 install:
   - yarn global add codecov
   - cd server
@@ -24,9 +30,7 @@ script:
   - yarn test:coverage
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-  - echo ${CF_DISTRIBUTION_ID}
-  - /usr/bin/python -V
-  - /usr/bin/python3 -V
+  # Delete bucket content
   - aws_access_key_id=${AWS_ACCESS_KEY_ID} aws_secret_access_key=${AWS_SECRET_ACCESS_KEY} aws s3 rm s3://sh.diogocardoso.me --recursive --region eu-west-2
 before_deploy:
   - cd ../client
