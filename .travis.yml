@@ -2,8 +2,8 @@
 language: node_js
 node_js:
   - "10"
-# python:
-#   -
+python:
+  - "3.4.3"
 sudo: false
 cache:
   yarn: true
@@ -21,7 +21,7 @@ install:
   - cd ../client
   - yarn
 before_script:
-  - pip install awscli --upgrade --user
+  - pip3 install awscli --upgrade --user
   - export PATH=$PATH:$HOME/.local/bin
 script:
   - yarn build
