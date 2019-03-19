@@ -1,20 +1,23 @@
+import express, {
+  Request,
+  Response,
+  NextFunction,
+  ErrorRequestHandler
+} from "express";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
-import express, { Request, Response, NextFunction } from "express";
-import _ from "lodash";
 import helmet from "helmet";
 import cors, { CorsOptions } from "cors";
-
-import urls from "./routes/index";
+import routes from "./routes/index";
 
 dotenv.config();
-const { NODE_ENV, BASE_URL } = process.env;
+const { NODE_ENV, CLIENT_DEV_PORT, BASE_URL } = process.env;
 const isProd = NODE_ENV === "production";
 
 const app = express();
 
 const whitelist = [
-  "http://localhost:3000",
+  `http://localhost:${CLIENT_DEV_PORT}`,
   `https://${BASE_URL}`,
   `https://www.${BASE_URL}`
 ];
@@ -34,7 +37,7 @@ app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/", urls);
+app.use("/", routes);
 
 // Handle 404s
 app.use((req: Request, res: Response) => {
@@ -43,11 +46,18 @@ app.use((req: Request, res: Response) => {
 });
 
 // Handle server errors
-app.use((err: any, req: Request, res: Response, next: NextFunction) => {
-  if (res.headersSent) {
-    return next(err);
+app.use(
+  (
+    err: ErrorRequestHandler,
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) => {
+    if (res.headersSent) {
+      return next(err);
+    }
+    return res.status(500).json({ error: isProd ? "Server error" : err });
   }
-  return res.status(500).json({ error: isProd ? "Server error" : err });
-});
+);
 
 export default app;
