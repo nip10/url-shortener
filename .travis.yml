@@ -15,7 +15,7 @@ install:
   - cd ../client
   - yarn
 before_script:
-  - pip install awscli
+  - pip install --user awscli
 script:
   - yarn build
   - cd ../server
