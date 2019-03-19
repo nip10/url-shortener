@@ -8,20 +8,22 @@ cache:
     - "node_modules"
 services:
   - mongodb
-before_install:
+install:
+  - yarn global add codecov
   - cd server
   - yarn
+  - cd ../client
+  - yarn
 script:
-  - yarn global add codecov
+  - yarn build
+  - cd ../server
   - yarn lint
   - yarn test:coverage
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-  - cd ..
+  - aws s3 rm s3://sh.diogocardoso.me --recursive --region=eu-west-2
 before_deploy:
-  - cd client
-  - yarn
-  - yarn build
+  - cd ../client
 notifications:
   email: false
 deploy:
@@ -31,8 +33,10 @@ deploy:
   secret_access_key:
     secure: "rgr1LdkkMtokkDo6SvPTFSqsm/tLVFnzs5OEYCP70qat6fw4DiSnGeNQhzBq3uSiwitzymir+0w1h85SYx7zPvaGkJah9pLR0z4ZQjlWy7jD7TY/ncq2UBA77By5gPeFWZz7JfbLk2cO8jRINqeHQU24QfMwIC5O1rLQBBquceA7E1XCfp70AyI0AxpvdJ3DJ2s1Kh1R2OZhEWhZ6Iskwe09uwmeELCZxpH68Hk5uq/x6EApiFf04xZTEDSZKX8EzAactYgPvEJBMsD4h4QVj0tNrxIwkwPATrjJU90O/ILfaNnjMDdOJTVsVocKEEFBAqbrFGIcjtoT/40kkeKrXZmyjrQlAccm0H6kuY6W6cd4lJ2/IEVf+yH60SBTo438iqkfioHp4gOjpEHPcIq5RFEP/oj6ZNpAHMsG3Yf7P1GtKryM2X8mbeaDTQ8Hfcf0hjVyIBMsg4Thas8G0a+JP76wQof5FCYB385G7xcDWZ+0sbWlgkVfmDEfZJ+lPub1DwAh4koCBq9HmcioP8qdUCW2KKDtzdSiEx6CjCh7t2fK7ddnHFtWNAPBJMytuWoO8gWtKnWLiPh8U3afJBiJcsA7/P4cc9GJ2EHnNthckACccUhkQcjUGCik2tjGlbpvpnhoTzmCTJpKKqmtQtUjfVWM+y0PkbZ1B+fwno7oLyY="
   bucket: sh.diogocardoso.me
+  # Prevent Travis from deleting the build artifacts
   skip_cleanup: true
   region: eu-west-2
+  # Deploy a single folder and not the entire project
   local_dir: build
 after_deploy:
   - aws cloudfront create-invalidation --distribution-id ${CF_DISTRIBUTION_ID} --paths /*
@@ -42,3 +46,4 @@ env:
     - secure: "IGDLrHaKjurOv2L4oLiaTljD6MHAO83qTftUqup748jKiKsvg2zFd7Hnwcd66yebCkOrOvf6hTnzzl9meCm4UhnThZGGyglSL+43fpvt7EoOmfVKR8ZWReB1h0spros3FnsP0Yad72dKkyTYHRVHWUZZCtVOmUU6i6rsWrjM8bIs6vvivl6ItrfP202okLPRoBhON71S+fIFkMSdI7LZ/FrwtnttQxK/C1hobCJsE32cGW/PnL7ZqLt5ROGZcq5cFkhn7x3Ygd+DAOnVcyoT3McCaugNl3mEG6+ozP1n9ByXRNt7vSgGFTyN8W8Do8r/tv9Jca4yl+djQTQzY2zTzsd4hjlnNdz6L6Z5GO6QNinkCGYkb0ZkNnCGaJf7U3B5gtcTI2ceIRedlWAToQBrV+F9nu3POILoTzqbZdxEoWysvfhuql5jSsrdue+zIVQ5QrFgMlNNNpLSN7/XcLSNQHKCFOA8GF16Y1G42cuBFk1iYUsErcec/RlyiXZVrteHAD2hKhxsh+LiDx00TT/O8/CWIevJAKhpn/ZH6tFOUDnmOsiI+K5V8tQT0tnKb+jI2Jsf+rNTz/c7FxwqYSMa+afOUr1bAv9Jjre0oiPYaloSHqcbco6RffK1uWVz3YHrKx55HzBxj9AucoKzrelJhv9af7bKjIGPZyUvoXdP4tw="
     - secure: "GL6Oq22PuElpsutHpHuWzYBLachMEWaNv0Hg0uZnocI8LAMmzmBbJUmgG8AcMMaRVJRr+9INz3yy7AjgZSyYkj0dYLagY5Y0iW3GZoXPn8SME++hzMEQKlTeYDktVGdVGZyq6clOLaIUbd5XU+dMz4efiZoXm6K9KvhCGCB0X9+pV4Up9pHkkn2HE6Xo2QIvCptPePRo9bem4/hJo+TodDPalbtb7Quez55sjGes1yLSMGgrctNuq7VvG7yvhb54Dx1o7+bwnI+Gm5lMvzNVQ9gKzcsy3pCzYgIsZjLT6dNFj68JQ5PTM71Psm7xR1tzFiWnEtKP1y6QQ1vzlTb/zfIcZEf96EJclBVtVjzBr1v3+Pa2rsTGgOvKJN0dB7Q5wJu32MkS86CTuUeoVoJyqAp3L378LEcdtpQhTurocPXyexkNL/aUunk+imUK+mpo2w0pqP0ugLPadkui5raG9mW+3v7FXsN4EH4NqIVISL0g8OUsOHDCw2KE3z3oQiwoQ2bXeOOjVWMxrs8BbK9VxNz5SaHT9FT3pOeBoyxt4w2VZfWQnke4ejWDfsh+U7Lt+d52yfmV8Mv/c6kRc/D13/UJ9vtpx4K4SrRqB7aJEw6ryNShOoZRyB7K993l9nm3/6dCv99O2AX13Nvph7q8Vr3nO2EDadfr2QjHa7CSq58="
     - secure: "ArXzVv9z3zHGNEsxcxBzloXk3ggRK3Q8RXZEOP7nBi3eEypLfu6YtUTPW28yPYQoP/T3eYrHtKFBMuqHNB71tSU2CcAK4LPakw5KBVTqeuJ3jCduXp40v44GS4qvq4WytpkaYFMsTX3gOrX+4Jkb4rfCGudB9X4POJvI8iHlJeTppvhbxuZAHYp4BUmbyssqXmRTS6yJoiLb0zuRb5qjv3JimKQY+E6LvHIcNsTnY87qzDfsQXKVdHsBL+mSM3/7+3BY/9R4icWnFNSGYBJ+r+Kjge2TKMFZI65KqoeaLUK/QL5mTQhYwpK8wJfkT4mFSDJxBdo8uq3VQF34Nh0o7qtJFnSVzQmfOlI/jgfrbYsc+Og2GZYsyAuiRgrwbNJwmjkHwvgnZKwB8giWjMrEGNnMBNx0voyNb4ySt+yOEOBm0CiihpZVQolh47W+HbP+cbtm81jGSpHtUGKrtfgHQ3YfEjlw2pt/tyXGplhhqWypxp75yPTuQfBvx6fBH2OTvI5Sj+KpIRVp095X4ssl8HY7t3kz4ZRUNtvKWhYreIKmYwO+YPAC4KuO6Ild1H6QdbdsF1JwPjcmYG92JpaxH5zn4XOcnFCllAAFnKjjV7XNb6mcpO9KFar1XD0imE4Mo0GZvoQL1qWongWGiZGDyV74fD5i/0L2WYQwEuOrwtc="
+    - secure: "lc0aKGvW5e8XXYbS3niasewq/NIXzPZsBGeHmy5Q+QQXeLiIeJ8SwPGFjsAOFW7JgXlQeyzcDYlI99oF6Det4Gg9WjrFjR7oj9qsnAlhZBOXr86xgNLxEvPGbJNkdOZDhK2o+oevoMqv50ZcFxor9ftY90GqWS8OniXgMsQdfebXNZsPAQL5079Z38mmXTEmf1WzQ/iNCJoDOZyfByZv1vWWVQuXQNJuP3fYdgruM3zIcF6ZUWVZYsBmzbMCdIxkLkvSlaN0nHo1+FAb4RUqLmxBUkoe9l9GzIAvXhVqq36/S5e3CAbYSL2cNX5/OGcUmfznYKuZjJxgYIzcX2PrlzkxHoBIaM48HjpMX92VBOb+0fc128bvgmoVNDsSP5LRiBn4C0D/CMQ8ZtI3+qWdUkxPmWYqSJs5JE1V4tX/glpWNdfyOe1rb6OrjfMpR6NcGZawZ4RjU5/NDwgtIRq0KobTkfKHszPMRwR2xL+ARjDbJPnRPwBnpPKNKnrDTCV7GIEG7YGIWSYTtXX4LePYbU4Yn8XOnO1SyRreyEk3mXl/4hvZaaGDe8Kgdyv8+NVf8h4OOwxP+A3qQFpnwVvDwuxLzudE7x8PCrYsqcOU520KGQY86ard7R+zqWMFKlJNwEgVf7qQzFSR/bcx47hLn0h7V5fZq4P6IB/o1ZYEPNc="
