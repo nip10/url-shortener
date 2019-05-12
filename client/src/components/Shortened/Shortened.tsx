@@ -5,14 +5,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Shortened.css";
 
 const isDev = process.env.NODE_ENV === "development";
-const API_BASE_URL = isDev ? "http://localhost:3001/" : "https://api.sh.diogocardoso.me/";
+const BASE_URL = isDev ? "http://localhost:3000/" : "https://sh.diogocardoso.me/";
 
 interface IShortenedProps {
   url: string;
   elId: string;
 }
 
-const buildFullUrl = (url: string) => `${API_BASE_URL}${url}`;
+const buildFullUrl = (url: string) => `${BASE_URL}${url}`;
 
 export default function Shortened({ url, elId }: IShortenedProps) {
   const onCopyClickHandler = (e: React.MouseEvent<HTMLElement>) => {
@@ -23,8 +23,10 @@ export default function Shortened({ url, elId }: IShortenedProps) {
         const selection = window.getSelection();
         const range = document.createRange();
         range.selectNodeContents(el);
-        selection.removeAllRanges();
-        selection.addRange(range);
+        if (selection) {
+          selection.removeAllRanges();
+          selection.addRange(range);
+        }
         document.execCommand("copy");
       }
     }
