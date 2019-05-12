@@ -18,10 +18,10 @@ describe("GET /:shortUrl", () => {
   // Populate urls collection
   beforeEach(populateUrls);
 
-  it("should return 302 (redirect) if shortUrl exists", done =>
+  it("should return 200 and longUrl, if shortUrl exists", done =>
     request(app)
       .get(`/${shortUrls[0]}`)
-      .expect(302)
+      .expect(200)
       .end(async (err, res) => {
         if (err) {
           return done(err);
@@ -31,6 +31,7 @@ describe("GET /:shortUrl", () => {
           // Make sure the number of url documents in the urls collection is the same
           // as the number of urls inserted
           expect(count).toBe(urls.length);
+          expect(res.body.longUrl).toBeDefined();
           done();
         } catch (e) {
           done(err);
