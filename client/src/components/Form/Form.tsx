@@ -49,7 +49,7 @@ export default class Form extends React.Component<IFormProps, IFormState> {
         this.props.errorHandler("Invalid URL.");
         this.setState({ ...this.state, validationError: true });
       } else {
-        this.props.errorHandler("Server error. Please try again.");
+        this.props.errorHandler("Server error. Please try again later.");
         this.setState({ ...this.state, validationError: false });
       }
     }

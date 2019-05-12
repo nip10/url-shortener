@@ -2,6 +2,8 @@ Readme:
   ☐ Add recording
     Record the shortening action. Use something like Recordit
 Client:
+  ☐ Cache recent urls (redis)
+  ☐ Add a queue for generating urls (rabbitmq)
   ✔ Show number of shortened urls @done(19-03-13 18:29)
   ☐ Save the generated short urls in localstorage
   ☐ Show the original url
