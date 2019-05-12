@@ -18,7 +18,8 @@ const getUrl = async (req: Request, res: Response) => {
   try {
     const { url } = await Url.findByIdAndUpdate(id, update);
     logger.info(`Requested shortUrl ${shortUrl} for ${url}`);
-    return res.redirect(url);
+    // return res.redirect(url);
+    return res.json({ longUrl: url });
   } catch (e) {
     logger.error(`Url "${shortUrl}" (decoded id: ${id}) not found.`);
     // TODO: This should redirect to the homepage and show an error message
@@ -37,7 +38,7 @@ const saveUrl = async (req: Request, res: Response) => {
   }
   if (!isURL(longUrl, { require_protocol: true })) {
     // This means that the url is valid but doesn't have the protocol (http/https)
-    // We assume that the url has https enabled, since its almost 2019
+    // We assume that the url has https enabled, since its 2019
     longUrl = `https://${longUrl}`;
   }
   const url = new Url({ url: longUrl });
