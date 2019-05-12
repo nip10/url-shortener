@@ -37,7 +37,7 @@ const saveUrl = async (req: Request, res: Response) => {
   }
   if (!isURL(longUrl, { require_protocol: true })) {
     // This means that the url is valid but doesn't have the protocol (http/https)
-    // We assume that the url has https enabled, since its almost 2019
+    // We assume that the url has https enabled, since its 2019
     longUrl = `https://${longUrl}`;
   }
   const url = new Url({ url: longUrl });
