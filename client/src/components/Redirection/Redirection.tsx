@@ -10,7 +10,7 @@ class Redirection extends Component<any, {}> {
   componentDidMount = async () => {
     const { shortUrl } = this.props.match.params;
     try {
-      const res = await Axios.get(`https://api.sh.diogocardoso.me/${shortUrl}`);
+      const res = await Axios.get(`https://www.api.sh.diogocardoso.me/${shortUrl}`);
       window.location = res.data.longUrl;
     } catch (error) {
       console.log("Error redirecting to url");
