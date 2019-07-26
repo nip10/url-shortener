@@ -8,7 +8,7 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import helmet from "helmet";
 import cors, { CorsOptions } from "cors";
-import routes from "./routes/index";
+import routes from "./routes";
 
 dotenv.config();
 const { NODE_ENV, CLIENT_DEV_PORT, BASE_URL } = process.env;
