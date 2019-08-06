@@ -2,11 +2,11 @@ Readme:
   ☐ Add recording
     Record the shortening action. Use something like Recordit
 Client:
-  ☐ Add react-router to generate short-urls without the api. prefix
-  ☐ Cache recent urls (redis)
-  ☐ Add a queue for generating urls (rabbitmq)
+  ✔ Add react-router to generate short-urls without the api. prefix @done(19-08-06 15:51)
+  ✘ Cache recent urls (redis) @cancelled(19-08-06 15:51)
+  ✘ Add a queue for generating urls (rabbitmq) @cancelled(19-08-06 15:51)
   ✔ Show number of shortened urls @done(19-03-13 18:29)
-  ☐ Save the generated short urls in localstorage
+  ✔ Save the generated short urls in localstorage @done(19-08-06 16:06)
   ☐ Show the original url
     Maybe add an icon "i" that will show the original url while pressed (in the div where the shorturl is shown)
   ☐ Style the error message
@@ -51,11 +51,11 @@ Client:
 Server:
   ☐ Fix this
     {"message":"Url \"favicon.ico\" (decoded id: 1308184420381532400) not found.","level":"error"}
-  ☐ Remove hardcoded URLs
+  ✔ Remove hardcoded URLs @done(19-08-06 16:06)
 
 Global:
   ✔ Remove all 'any' keywords @done(18-12-18 00:25)
     Express error is supposed to be 'any'
 
 Ideas:
-  ☐ Add authentication to track previously generated urls and stats
+  ✘ Add authentication to track previously generated urls and stats @cancelled(19-08-06 16:06)

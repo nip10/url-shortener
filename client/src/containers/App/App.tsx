@@ -27,7 +27,27 @@ class App extends Component<{}, IAppState> {
     this.state = { urls: [], error: "", numUrls: 0 };
   }
 
+  private loadUrlsFromLocalStorage = () => {
+    try {
+      const shortUrls = localStorage.getItem("shortUrls");
+      if (shortUrls === null) {
+        return null;
+      }
+      const serializedShortUrls = JSON.parse(shortUrls);
+      this.setState({ ...this.state, urls: serializedShortUrls });
+    } catch (err) {
+      return null;
+    }
+  };
+
+  private saveUrlsToLocalStorage = () => {
+    const serializedShortUrls = JSON.stringify(this.state.urls);
+    localStorage.setItem("shortUrls", serializedShortUrls);
+  };
+
   public componentDidMount = async () => {
+    // Get shorturls from localstorage
+    this.loadUrlsFromLocalStorage();
     try {
       const res: AxiosResponse<INumUrlsResponse> = await Axios.get(`${API_BASE_URL}stats`);
       const { numUrls } = res.data;
@@ -39,6 +59,8 @@ class App extends Component<{}, IAppState> {
 
   private shortenUrl = (url: string) => {
     this.setState({ ...this.state, urls: [url, ...this.state.urls] });
+    // Update shorturls in localstorage
+    this.saveUrlsToLocalStorage();
   };
 
   private errorHandler = (message: string) => {
