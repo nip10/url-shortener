@@ -12,13 +12,18 @@ const isDev = process.env.NODE_ENV === "development";
 const API_BASE_URL = isDev ? "http://localhost:3001/" : "https://www.api.sh.diogocardoso.me/";
 
 interface IAppState {
-  urls: string[];
+  urls: IUrls[];
   error: string;
   numUrls: number;
 }
 
 interface INumUrlsResponse {
   numUrls: number;
+}
+
+interface IUrls {
+  shortUrl: string;
+  longUrl: string;
 }
 
 class App extends Component<{}, IAppState> {
@@ -29,7 +34,7 @@ class App extends Component<{}, IAppState> {
 
   private loadUrlsFromLocalStorage = () => {
     try {
-      const shortUrls = localStorage.getItem("shortUrls");
+      const shortUrls = localStorage.getItem("urls");
       if (shortUrls === null) {
         return null;
       }
@@ -42,12 +47,13 @@ class App extends Component<{}, IAppState> {
 
   private saveUrlsToLocalStorage = () => {
     const serializedShortUrls = JSON.stringify(this.state.urls);
-    localStorage.setItem("shortUrls", serializedShortUrls);
+    localStorage.setItem("urls", serializedShortUrls);
   };
 
   public componentDidMount = async () => {
     // Get shorturls from localstorage
     this.loadUrlsFromLocalStorage();
+    // Get stats from the API
     try {
       const res: AxiosResponse<INumUrlsResponse> = await Axios.get(`${API_BASE_URL}stats`);
       const { numUrls } = res.data;
@@ -57,8 +63,8 @@ class App extends Component<{}, IAppState> {
     }
   };
 
-  private shortenUrl = (url: string) => {
-    this.setState({ ...this.state, urls: [url, ...this.state.urls] });
+  private shortenUrl = (url: IUrls) => {
+    this.setState({ ...this.state, urls: [...this.state.urls, url] });
     // Update shorturls in localstorage
     this.saveUrlsToLocalStorage();
   };

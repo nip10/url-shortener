@@ -3,19 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.15",
-    "@fortawesome/free-brands-svg-icons": "^5.7.2",
-    "@fortawesome/free-regular-svg-icons": "^5.7.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.21",
+    "@fortawesome/free-brands-svg-icons": "^5.10.1",
+    "@fortawesome/free-regular-svg-icons": "^5.10.1",
+    "@fortawesome/free-solid-svg-icons": "^5.10.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "classnames": "^2.2.6",
     "normalize.css": "^8.0.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-github-corner": "^2.3.0",
-    "react-router-dom": "^5.0.0",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "2.1.8",
-    "typescript": "^3.3.3333"
+    "typescript": "^3.3.3333",
+    "validator": "^11.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -35,17 +37,17 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@types/axios": "^0.14.0",
-    "@types/classnames": "^2.2.6",
-    "@types/jest": "^24.0.11",
+    "@types/classnames": "^2.2.9",
+    "@types/jest": "^24.0.17",
     "@types/node": "^11.11.2",
     "@types/react": "^16.8.8",
     "@types/react-dom": "^16.8.2",
-    "@types/react-router-dom": "^4.3.3",
-    "prettier": "^1.16.4",
-    "tslint": "^5.14.0",
+    "@types/react-router-dom": "^4.3.4",
+    "@types/validator": "^10.11.2",
+    "prettier": "^1.18.2",
+    "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
-    "tslint-react": "^3.6.0"
+    "tslint-react": "^4.0.0"
   }
 }

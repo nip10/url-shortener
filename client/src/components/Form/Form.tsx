@@ -1,6 +1,7 @@
 import React from "react";
 import Axios, { AxiosResponse } from "axios";
 import classNames from "classnames";
+import { isURL } from "validator";
 import "./Form.css";
 
 const isDev = process.env.NODE_ENV === "development";
@@ -12,8 +13,13 @@ interface IFormState {
   validationError: boolean;
 }
 
+interface IUrls {
+  shortUrl: string;
+  longUrl: string;
+}
+
 interface IFormProps {
-  shortenUrlHandler: (url: string) => void;
+  shortenUrlHandler: (url: IUrls) => void;
   errorHandler: (message: string) => void;
 }
 
@@ -33,15 +39,20 @@ export default class Form extends React.Component<IFormProps, IFormState> {
 
   private handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const longUrl = this.state.url;
+    let longUrl = this.state.url;
     const lastUrl = this.state.lastUrl;
     if (longUrl === lastUrl) {
       this.props.errorHandler("You already submitted this URL.");
       return;
     }
     try {
+      if (!isURL(longUrl, { require_protocol: true })) {
+        // This means that the url is valid but doesn't have the protocol (http/https)
+        // We assume that the url has https enabled, since its 2019
+        longUrl = `https://${longUrl}`;
+      }
       const res: AxiosResponse<IShortUrlResponse> = await Axios.post(API_BASE_URL, { longUrl });
-      this.props.shortenUrlHandler(res.data.shortUrl);
+      this.props.shortenUrlHandler({ shortUrl: res.data.shortUrl, longUrl });
       this.props.errorHandler("");
       this.setState({ ...this.state, validationError: false });
     } catch (error) {
