@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import Axios from "axios";
-import { withRouter } from "react-router-dom";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 
-// interface IRedirectionProps {
-//   match: any;
-// }
+interface IMatchParamsProps {
+  shortUrl: string;
+}
 
-class Redirection extends Component<any, {}> {
+class Redirection extends Component<RouteComponentProps<IMatchParamsProps>, {}> {
   componentDidMount = async () => {
     const { shortUrl } = this.props.match.params;
     try {
