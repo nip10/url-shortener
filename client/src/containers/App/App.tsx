@@ -7,6 +7,7 @@ import Shortened from "../../components/Shortened/Shortened";
 import Error from "../../components/Error/Error";
 import "normalize.css";
 import "./App.css";
+import classNames from "classnames";
 
 const isDev = process.env.NODE_ENV === "development";
 const API_BASE_URL = isDev ? "http://localhost:3001/" : "https://www.api.sh.diogocardoso.me/";
@@ -74,13 +75,20 @@ class App extends Component<{}, IAppState> {
   };
 
   public render() {
+    const formClassNames = classNames("", {
+      "with-error": this.state.error
+    });
     return (
       <Fragment>
         <Title numUrls={this.state.numUrls} />
-        <Form shortenUrlHandler={this.shortenUrl} errorHandler={this.errorHandler} />
+        {this.state.error.length > 0 && <Error message={this.state.error} />}
+        <Form
+          classNames={formClassNames}
+          shortenUrlHandler={this.shortenUrl}
+          errorHandler={this.errorHandler}
+        />
         {this.state.urls.length > 0 &&
           this.state.urls.map((url, i) => <Shortened key={i} elId={`url${i}`} url={url} />)}
-        {this.state.error.length > 0 && <Error message={this.state.error} />}
         <GithubCorner href="https://github.com/nip10/url-shortener" />
       </Fragment>
     );

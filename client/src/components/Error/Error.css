@@ -1,0 +1,8 @@
+.error {
+  height: 4rem;
+}
+
+.error > h3 {
+  margin: 0;
+  text-align: center;
+}

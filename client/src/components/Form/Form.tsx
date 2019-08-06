@@ -21,6 +21,7 @@ interface IUrls {
 interface IFormProps {
   shortenUrlHandler: (url: IUrls) => void;
   errorHandler: (message: string) => void;
+  classNames: string;
 }
 
 interface IShortUrlResponse {
@@ -39,22 +40,22 @@ export default class Form extends React.Component<IFormProps, IFormState> {
 
   private handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    this.props.errorHandler("");
     let longUrl = this.state.url;
+    if (!isURL(longUrl, { require_protocol: true })) {
+      // This means that the url is valid but doesn't have the protocol (http/https)
+      // We assume that the url has https enabled, since its 2019
+      longUrl = `https://${longUrl}`;
+    }
     const lastUrl = this.state.lastUrl;
     if (longUrl === lastUrl) {
       this.props.errorHandler("You already submitted this URL.");
       return;
     }
     try {
-      if (!isURL(longUrl, { require_protocol: true })) {
-        // This means that the url is valid but doesn't have the protocol (http/https)
-        // We assume that the url has https enabled, since its 2019
-        longUrl = `https://${longUrl}`;
-      }
       const res: AxiosResponse<IShortUrlResponse> = await Axios.post(API_BASE_URL, { longUrl });
       this.props.shortenUrlHandler({ shortUrl: res.data.shortUrl, longUrl });
-      this.props.errorHandler("");
-      this.setState({ ...this.state, validationError: false });
+      this.setState({ ...this.state, validationError: false, lastUrl: longUrl });
     } catch (error) {
       if (error.response && error.response.status === 400) {
         this.props.errorHandler("Invalid URL.");
@@ -71,7 +72,7 @@ export default class Form extends React.Component<IFormProps, IFormState> {
       "form-input-url-invalid": this.state.validationError
     });
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className={this.props.classNames} onSubmit={this.handleSubmit}>
         <input
           className={inputClass}
           type="text"

@@ -2,7 +2,6 @@ Readme:
   ☐ Add recording
     Record the shortening action. Use something like Recordit
 Client:
-  ☐ Style the error message
   ☐ Add animations
     ☐ While generating the short url
       Maybe a div with the size of the shorturl div, but greyd out
@@ -11,6 +10,7 @@ Client:
       the animation happens on the bottom item, while the top item is added without any animation.
       When adding a 2nd+ item, the others should slide down (not fade) and the full animation run on that item.
     ✔ On hover (clickable stuff) @done(19-03-13 18:31)
+  ✔ Style the error message @done(19-08-06 17:23)
   ✔ Add react-router to generate short-urls without the api. prefix @done(19-08-06 15:51)
   ✘ Cache recent urls (redis) @cancelled(19-08-06 15:51)
   ✘ Add a queue for generating urls (rabbitmq) @cancelled(19-08-06 15:51)

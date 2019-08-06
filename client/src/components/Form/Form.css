@@ -1,5 +1,10 @@
 form {
   text-align: center;
+  margin-top: 4rem;
+}
+
+form.with-error {
+  margin-top: 0;
 }
 
 .form-input-url {
