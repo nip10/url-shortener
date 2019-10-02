@@ -14,16 +14,16 @@
     "test:watch": "cross-env NODE_ENV=test yarn run test -- --watchAll"
   },
   "dependencies": {
-    "bluebird": "^3.5.5",
+    "bluebird": "^3.7.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
-    "helmet": "^3.20.0",
+    "helmet": "^3.21.1",
     "lodash": "^4.17.15",
     "mongodb": "^3.3.0",
     "mongoose": "^5.6.10",
-    "typescript": "^3.5.3",
+    "typescript": "^3.6.3",
     "validator": "^11.1.0",
     "winston": "^3.2.1"
   },
