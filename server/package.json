@@ -11,7 +11,9 @@
     "start": "cross-env NODE_ENV=production node dist/server.js",
     "test": "cross-env NODE_ENV=test jest --forceExit",
     "test:coverage": "cross-env NODE_ENV=test jest --forceExit --coverage",
-    "test:watch": "cross-env NODE_ENV=test yarn run test -- --watchAll"
+    "test:watch": "cross-env NODE_ENV=test yarn run test -- --watchAll",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "dependencies": {
     "bluebird": "^3.7.0",
@@ -25,7 +27,8 @@
     "mongoose": "^5.6.10",
     "typescript": "^3.6.3",
     "validator": "^11.1.0",
-    "winston": "^3.2.1"
+    "winston": "^3.2.1",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
@@ -58,5 +61,6 @@
     "tsconfig-paths": "^3.8.0",
     "tslint": "^5.19.0",
     "tslint-config-prettier": "^1.18.0"
-  }
+  },
+  "snyk": true
 }
