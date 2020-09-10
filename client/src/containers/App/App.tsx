@@ -10,7 +10,7 @@ import "./App.css";
 import classNames from "classnames";
 
 const isDev = process.env.NODE_ENV === "development";
-const API_BASE_URL = isDev ? "http://localhost:3001/" : "https://www.api.sh.diogocardoso.me/";
+const API_BASE_URL = isDev ? "http://localhost:3001/" : "https://www.api.sh.diogocardoso.dev/";
 
 interface IAppState {
   urls: IUrls[];

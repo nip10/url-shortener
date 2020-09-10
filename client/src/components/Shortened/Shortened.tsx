@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Shortened.css";
 
 const isDev = process.env.NODE_ENV === "development";
-const BASE_URL = isDev ? "http://localhost:3000/" : "https://sh.diogocardoso.me/";
+const BASE_URL = isDev ? "http://localhost:3000/" : "https://sh.diogocardoso.dev/";
 
 interface IUrls {
   shortUrl: string;

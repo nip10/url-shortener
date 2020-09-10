@@ -29,7 +29,7 @@
     "extends": "react-app"
   },
   "proxy": "http://localhost:3001",
-  "homepage": "https://sh.diogocardoso.me",
+  "homepage": "https://sh.diogocardoso.dev",
   "browserslist": [
     ">0.2%",
     "not dead",

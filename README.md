@@ -5,7 +5,7 @@
 
 Simple url-shortener with social sharing features. Built with Node, React and MongoDB.
 
-[Live demo](https://sh.diogocardoso.me)
+[Live demo](https://sh.diogocardoso.dev)
 
 TODO: Record generating a shortened url and show it here.
 
@@ -34,37 +34,49 @@ in both client and server folders.
 ## Running the tests
 
 At this moment, only the server has tests. To run the tests, run
+
 ```
 yarn test
 ```
 
 For the coverage report, run
+
 ```
 yarn test:coverage
 ```
 
 ## Development
+
 ### Client
+
 Run
+
 ```
 yarn start
 ```
+
 to start a development server with hot-reloading.
 
 ### Server
+
 Edit and rename .env.sample to .env
 
 Run
+
 ```
 yarn watch
 ```
+
 to start the server with hot-reloading (using Nodemon)
 
 ## Deployment
+
 ### Client
+
 Edit package.json's "homepage" property to refer to the url you are deploying to.
 
 Build, by running
+
 ```
 yarn build
 ```
@@ -72,25 +84,28 @@ yarn build
 Note: The Travis file included in the repo will deploy the client to an S3 bucket. If you are using S3, you can simply change the keys and "run" it.
 
 ### Server
+
 Edit and rename .env.sample to .env
 
 Build, by running
+
 ```
 yarn build
 ```
 
 After deploying it to your server, start the server by running:
+
 ```
 yarn start
 ```
 
 ## Built With
 
-* Typescript
-* NodeJS
-* MongoDB
-* Express
-* React
+- Typescript
+- NodeJS
+- MongoDB
+- Express
+- React
 
 ## Contributing
 

@@ -5,7 +5,7 @@ import { isURL } from "validator";
 import "./Form.css";
 
 const isDev = process.env.NODE_ENV === "development";
-const API_BASE_URL = isDev ? "http://localhost:3001/" : "https://www.api.sh.diogocardoso.me/";
+const API_BASE_URL = isDev ? "http://localhost:3001/" : "https://www.api.sh.diogocardoso.dev/";
 
 interface IFormState {
   url: string;

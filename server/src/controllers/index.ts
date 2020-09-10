@@ -10,7 +10,7 @@ const getUrl = async (req: Request, res: Response) => {
   if (!_.isString(shortUrl)) {
     // TODO: This should redirect to the homepage and show an error message
     // Something like this..
-    // return res.redirect("https://sh.diogocardoso.me/?error=BAD_REQUEST");
+    // return res.redirect("https://sh.diogocardoso.dev/?error=BAD_REQUEST");
     return res.sendStatus(400);
   }
   const id = decode(shortUrl);
@@ -24,7 +24,7 @@ const getUrl = async (req: Request, res: Response) => {
     logger.error(`Url "${shortUrl}" (decoded id: ${id}) not found.`);
     // TODO: This should redirect to the homepage and show an error message
     // Something like this..
-    // return res.redirect("https://sh.diogocardoso.me/?error=NOT_FOUND");
+    // return res.redirect("https://sh.diogocardoso.dev/?error=NOT_FOUND");
     return res.sendStatus(404);
   }
 };
