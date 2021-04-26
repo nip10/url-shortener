@@ -3,7 +3,7 @@ import { encode, decode } from "./../utils/shortten";
 import logger from "./../utils/logger";
 import Url from "../models/url";
 import _ from "lodash";
-import { isURL } from "validator";
+import isURL from "validator/lib/isURL";
 
 const getUrl = async (req: Request, res: Response) => {
   const shortUrl = _.get(req.params, "shortUrl");
