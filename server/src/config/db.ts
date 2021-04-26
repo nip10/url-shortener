@@ -27,7 +27,8 @@ const dburl = isTest ? MONGODB_URI_TEST : MONGODB_URI;
 
 const mongooseOptions = {
   reconnectTries: 10,
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 };
 
 mongoose.set("useFindAndModify", false);
