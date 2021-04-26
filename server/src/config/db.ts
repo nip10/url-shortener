@@ -26,12 +26,10 @@ const dburl = isTest ? MONGODB_URI_TEST : MONGODB_URI;
 (mongoose as any).Promise = Bluebird;
 
 const mongooseOptions = {
-  reconnectTries: 10,
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 };
-
-mongoose.set("useFindAndModify", false);
 
 mongoose.connect(dburl, mongooseOptions).then(
   () => {
